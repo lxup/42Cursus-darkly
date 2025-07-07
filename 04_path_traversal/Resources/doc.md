@@ -1,0 +1,3 @@
+# Path traversal
+
+A webserver that exposes a file system to the user can be vulnerable to path traversal attacks. This occurs when an attacker manipulates the file path to access files outside of the intended directory. Imagine a web page running on the server with path `/var/www/html/mypage.php`. If we access the page with a URL like `/?page=mypage`. The server will look for the file in the `/var/www/html/` directory. However, if we change the URL to `/?page=../../outside`, the server will try to access the file at `/var/www/html/../../outside`, which is outside of the intended directory. This can lead to unauthorized access to sensitive files on the server. For example, we could access the `/etc/passwd` file by using the URL `/?page=../../../../../../../etc/passwdd`.
