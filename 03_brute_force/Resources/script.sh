@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ip="192.168.56.102"
+ip="192.168.56.104"
 
 echo "[*] Starting brute force on $ip..."
 
