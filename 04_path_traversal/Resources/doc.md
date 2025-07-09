@@ -1,3 +1,6 @@
 # Path traversal
 
 A webserver that exposes a file system to the user can be vulnerable to path traversal attacks. This occurs when an attacker manipulates the file path to access files outside of the intended directory. Imagine a web page running on the server with path `/var/www/html/mypage.php`. If we access the page with a URL like `/?page=mypage`. The server will look for the file in the `/var/www/html/` directory. However, if we change the URL to `/?page=../../outside`, the server will try to access the file at `/var/www/html/../../outside`, which is outside of the intended directory. This can lead to unauthorized access to sensitive files on the server. For example, we could access the `/etc/passwd` file by using the URL `/?page=../../../../../../../etc/passwdd`.
+
+# How to prevent it
+To prevent path traversal attacks, you should validate the file path against a whitelist of allowed directories. For example we can check if the file path starts with `/var/www/html/` and reject any path that tries to go outside of this directory. Additionally, you can use functions that sanitize the file path, such as `realpath()` in PHP, which resolves the absolute path and removes any `..` or `.` segments.

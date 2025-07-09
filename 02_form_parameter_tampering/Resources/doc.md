@@ -22,3 +22,6 @@ If there is no server-side validation, you can tamper with the `valeur` paramete
 	<option value="100">100</option>
 </select>
 ```
+
+# How to prevent it
+To prevent form parameter tampering, you should validate the input on the server side. For example, you can check if the `valeur` parameter is within the allowed range (1 to 10) before processing the form submission. If the value is outside of this range, you can reject the submission and return an error message to the user. Tools like `zod` can be used to validate the input in a structured way.
