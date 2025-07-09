@@ -4,8 +4,9 @@ from urllib.parse import urljoin
 from tqdm import tqdm
 import re
 
+ip = "192.168.56.105"
 visited = set()
-flag =
+flag_found = None
 progress_bar = None
 flag_regex = re.compile(r"\b[a-f0-9]{64}\b", re.IGNORECASE)
 session = requests.Session()
@@ -48,9 +49,7 @@ def crawl(url, depth=0):
                 content = requests.get(full_url, timeout=3).text
                 flag = contains_flag(content)
                 if flag:
-                    print(f"\n🎉 [FLAG FOUND] at {full_url} 🎉")
-                    print(f"====> {flag} <====")
-                    flag_found = True
+                    flag_found = flag
                     return
             except Exception:
                 continue
@@ -58,7 +57,7 @@ def crawl(url, depth=0):
             crawl(full_url, depth + 1)
 
 if __name__ == "__main__":
-    root_url = "http://192.168.56.104/.hidden/"
+    root_url = f"http://{ip}/.hidden/"
     print("[*] Crawling recursively, please wait...")
     progress_bar = tqdm(total=18279, desc="Exploration", unit="dir", ncols=80)
     crawl(root_url)
@@ -66,3 +65,5 @@ if __name__ == "__main__":
 
     if not flag_found:
         print("❌ No flag found.")
+    else:
+        print(f"✅ Flag found: {flag_found}")
