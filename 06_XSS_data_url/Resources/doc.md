@@ -23,3 +23,6 @@ And then we can use it in the URL:
 ```
 /?page=media&src=data:text/html;base64,PHNjcmlwdD5hbGVydCgnYmFuZ2VyJyk7PC9zY3JpcHQ+
 ```
+
+# How to prevent it
+To prevent this kind of attack, you should not allow data URLs to be used in the application. If you store images in the database, just request them from an ID.

@@ -21,3 +21,6 @@ If we decode `1928e8083cf461a51303633093573c46` in MD5 we get `albatroz`. Then e
 echo -n "albatroz" | sha256sum | cut -d ' ' -f 1
 ```
 We get the flag.
+
+# How to prevent it
+Same as the previous snippet.

@@ -22,3 +22,6 @@ This indicates that the page expects a specific referrer header to be set (`http
 curl -e https://www.nsa.gov/ -A "ft_bornToSec" "http://[ip]/?page=b7e44c7a40c5f80139f0a50f3650fb2bd8d00b0d24667c4c2ca32c88e13b758f"
 ```
 We will see the content of the page.
+
+# How to prevent it
+To prevent header manipulation attacks, you should not rely on irrelevant headers like `Referer` or `User-Agent` for security checks. These headers can be easily manipulated by an attacker. Instead, you should implement proper authentication and authorization mechanisms to validate the request (e.g., using tokens, session management, etc.).

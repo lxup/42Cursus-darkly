@@ -32,3 +32,6 @@ If we decrypt `5ff9d0165b4f92b14994e5c685cdce28` in MD5 we get `FortyTwo`. Then 
 echo -n "fortytwo" | sha256sum | cut -d ' ' -f 1
 ```
 We get the flag.
+
+# How to prevent it
+To prevent SQL injection, you should always use prepared statements or parameterized queries. This ensures that user input is treated as data and not executable code. Additionally, you should validate and sanitize user input to ensure it meets the expected format and does not contain malicious content. Just use an ORM...

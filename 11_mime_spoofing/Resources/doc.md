@@ -13,3 +13,6 @@ curl -s -X POST "$ip/index.php?page=upload" \
 
 rm "$script"
 ```
+
+# How to prevent it
+To prevent mime spoofing, you should not rely (only) on the file extension or the mime type to determine the file type. Instead, you should check the file content to ensure it is a valid image. Also, you should implement proper object storage management to handle file uploads securely (with unique identifiers, ...).
